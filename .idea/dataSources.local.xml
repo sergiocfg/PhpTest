@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MyPhp1@localhost" uuid="b5332af3-080b-44b7-98de-2adbb9e0eeb8">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>root@localhost</user-name>
+    </data-source>
+  </component>
+</project>
