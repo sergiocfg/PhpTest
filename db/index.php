@@ -6,38 +6,81 @@
 </head>
 <body>
 <?php
-/**
- * Created by PhpStorm.
- * User: sboudy
- * Date: 2/24/2017
- * Time: 2:06 PM
- */
 
-//try {
-    $mysql = new mysqli("localhost", "root", "", "test");//,3306, ""
-    //$db = mysqli_select_db('test');
+require "select.php";
 
-    if ($mysql->connect_error) {
-        die("Error: (". $mysql->connect_errno.').'.$mysql->connect_error);
-    }else {echo "Good connection...";}//else {throw new Error("Connection error...");}
-        echo "<br/>";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "test";
+$mytable = "student";
+mysqlSelect($host,$user,$pass,$db,$mytable);    // list table
+    ?>
 
-$student = mysqli_select_db($mysql,"student");// $mysql->select_db("student");
-$result = mysqli_query($mysql,"select * from student");
+<!--//------------------------------------ insert -------
+-->
+<form action="insert.php" method="post">
+    <input type="text" placeholder="Id" name="id"><br/>
+    <input type="text" placeholder="Name" name="name"><br/>
+    <input type="text" placeholder="Last Name" name="lastName"><br/>
+    <input type="text" placeholder="Score" name="score">
 
-while ($row = mysqli_fetch_row($result)){
-    print_r($row);// $row;//["id"];
-}
+    <input type="hidden", name = "host", value = "localhost">
+    <input type="hidden", name = "user", value = "root">
+    <input type="hidden", name = "pass", value = "">
+    <input type="hidden", name = "db", value = "test">
+    <input type="hidden", name = "mytable", value = "student">
+    <input type="submit" value="Insert">
+</form>
+<br/>
 
-//print_r($student);
-    //$query = mysqli_query("select * from student",)
-/*
-}catch(Exception $e){
-    echo "Error: ";*/
+<!--//------------------------------------ update -------
+-->
+<form action="update.php" method="post">
+    <input type="text" placeholder="Old Id" name="id"><br/>
+    <input type="text" placeholder="Name" name="name"><br/>
+    <input type="text" placeholder="Last Name" name="lastName"><br/>
+    <input type="text" placeholder="Score" name="score">
 
+    <input type="hidden", name = "host", value = "localhost">
+    <input type="hidden", name = "user", value = "root">
+    <input type="hidden", name = "pass", value = "">
+    <input type="hidden", name = "db", value = "test">
+    <input type="hidden", name = "mytable", value = "student">
+    <input type="submit" value="Update">
+</form>
+<br/>
 
+<!--//------------------------------------ delete -------
+-->
+<form action="delete.php" method="post">
+    <input type="text" placeholder="Id" name="id">
 
-?>
+    <input type="hidden", name = "host", value = "localhost">
+    <input type="hidden", name = "user", value = "root">
+    <input type="hidden", name = "pass", value = "">
+    <input type="hidden", name = "db", value = "test">
+    <input type="hidden", name = "mytable", value = "student">
+    <input type="submit" value="Delete">
+</form>
+
+<style>
+    table#t01
+    {
+        display:  table;
+        width:100%;
+        //background-color:#eee;
+        border:1px solid  #666666;
+        border-spacing:5px;
+        padding: 1px;
+        text-align: left;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+</style>
 </body>
 </html>
 
